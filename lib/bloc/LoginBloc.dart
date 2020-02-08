@@ -9,9 +9,13 @@ class LoginBloc  extends Object with LoginValidate implements Bloc{
   final _user = BehaviorSubject<String>();
   final _pwd = BehaviorSubject<String>();
 
-  Stream<String> get epnStream => _user.stream.transform();
-  Stream<String> get pwdStream => _pwd.stream.transform();
-  
+  Stream<String> get epnStream => _user.stream.transform(userVal);
+  Stream<String> get pwdStream => _pwd.stream.transform(pwdVal);
+  Function(String) get epnSink => _user.sink.add;
+  Function(String) get pwdSink => _pwd.sink.add;
+  Stream<bool> get validSubmit => Observable.combineLatest2(epnStream, pwdStream , (e, p) => true);
+
+
   @override
   void dispose() {
     // TODO: implement dispose
