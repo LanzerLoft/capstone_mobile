@@ -1,8 +1,9 @@
 import 'package:capstone/bloc/bloc.dart';
 import 'package:capstone/repository/LoginRepo.dart';
+import 'package:capstone/validations/LoginValidate.dart';
 import 'package:rxdart/rxdart.dart';
 
-class LoginBloc  extends Object implements Bloc{
+class LoginBloc  extends Object with LoginValidate implements Bloc{
   final _repo = LoginRepo();
 
   final _user = BehaviorSubject<String>();
@@ -15,5 +16,4 @@ class LoginBloc  extends Object implements Bloc{
   void dispose() {
     // TODO: implement dispose
   } 
-
 }
