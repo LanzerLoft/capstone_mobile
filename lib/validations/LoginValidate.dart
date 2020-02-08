@@ -22,6 +22,7 @@ class LoginValidate {
 
   final pwdVal = StreamTransformer<String, String>.fromHandlers(
     handleData: (pwd, sink){
+      
       if(pwd.length > 6){
         sink.add(pwd);
       }else{
