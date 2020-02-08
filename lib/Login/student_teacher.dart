@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 class Frontlogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Center(
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
           child: Padding(
             padding:
                 const EdgeInsets.only(top: 0, left: 40, right: 40, bottom: 0),

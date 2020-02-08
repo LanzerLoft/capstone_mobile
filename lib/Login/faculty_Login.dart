@@ -5,9 +5,9 @@ import 'package:passwordfield/passwordfield.dart';
 class Facultylogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
           color: Colors.blueGrey,
           child: Center(
             child: SingleChildScrollView(
