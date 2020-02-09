@@ -1,6 +1,7 @@
-  import 'package:capstone/pages/dashboard.dart';
+import 'package:capstone/pages/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:passwordfield/passwordfield.dart';
+import 'package:capstone/bloc/LoginBloc.dart';
 
 class StudentLogin extends StatelessWidget {
   @override
@@ -38,28 +39,34 @@ class StudentLogin extends StatelessWidget {
                   SizedBox(
                     height: 30,
                   ),
-                  TextField(
-                    style: TextStyle(fontSize: 25),
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.email,
-                        color: Colors.blueGrey,
-                      ),
-                      labelText: 'ID Number',
-                      labelStyle: TextStyle(
-                        color: Colors.blueGrey,
-                        fontFamily: 'OpenSans',
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.transparent),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
-                      ),
-                    ),
+                  StreamBuilder(
+                    stream: sl.epnStream,
+                    builder: (context, snapshot) {
+                      return TextField(
+                        onChanged: sl.epnSink,
+                        style: TextStyle(fontSize: 25),
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.email,
+                            color: Colors.blueGrey,
+                          ),
+                          labelText: 'ID Number',
+                          labelStyle: TextStyle(
+                            color: Colors.blueGrey,
+                            fontFamily: 'OpenSans',
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.transparent),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.blue),
+                          ),
+                        ),
+                      );
+                    }
                   ),
                   SizedBox(
                     height: 5,
@@ -94,10 +101,7 @@ class StudentLogin extends StatelessWidget {
                     height: 43,
                     child: FlatButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Dashboard()),
-                        );
+                        sl.submit(context);
                       },
                       color: Colors.blueGrey,
                       splashColor: Colors.white38,
@@ -136,39 +140,45 @@ class _PassTextfieldState extends State<PassTextfield> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      style: TextStyle(fontSize: 25),
-      decoration: InputDecoration(
-        prefixIcon: Icon(
-          Icons.lock,
-          color: Colors.blueGrey,
-        ),
-        labelText: 'Password',
-        labelStyle: TextStyle(
-          color: Colors.blueGrey,
-          fontFamily: 'OpenSans',
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
-        ),
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.transparent),
-        ),
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.blue),
-        ),
-        suffixIcon: GestureDetector(
-          onTap: () {
-            setState(() {
-              _showpassword = !_showpassword;
-            });
-          },
-          child: Icon(
-            _showpassword ? Icons.visibility : Icons.visibility_off,
-            color: Colors.blueGrey,
+    return StreamBuilder<Object>(
+      stream: sl.pwdStream,
+      builder: (context, snapshot) {
+        return TextField(
+          onChanged: sl.pwdSink,
+          style: TextStyle(fontSize: 25),
+          decoration: InputDecoration(
+            prefixIcon: Icon(
+              Icons.lock,
+              color: Colors.blueGrey,
+            ),
+            labelText: 'Password',
+            labelStyle: TextStyle(
+              color: Colors.blueGrey,
+              fontFamily: 'OpenSans',
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.transparent),
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.blue),
+            ),
+            suffixIcon: GestureDetector(
+              onTap: () {
+                setState(() {
+                  _showpassword = !_showpassword;
+                });
+              },
+              child: Icon(
+                _showpassword ? Icons.visibility : Icons.visibility_off,
+                color: Colors.blueGrey,
+              ),
+            ),
           ),
-        ),
-      ),
-      obscureText: !_showpassword,
+          obscureText: !_showpassword,
+        );
+      }
     );
   }
 }
