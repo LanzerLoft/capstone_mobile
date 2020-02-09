@@ -15,9 +15,17 @@ class LoginBloc  extends Object with LoginValidate implements Bloc{
   Function(String) get pwdSink => _pwd.sink.add;
   Stream<bool> get validSubmit => Observable.combineLatest2(epnStream, pwdStream , (e, p) => true);
 
-
+  submit(context) async { 
+    await _repo.getCurrent(_user.value, _pwd.value).then((data) {
+      print(data);
+    });
+  }
   @override
   void dispose() {
     // TODO: implement dispose
+    _user.close();
+    _pwd.close();
   } 
 }
+
+final sl = LoginBloc();

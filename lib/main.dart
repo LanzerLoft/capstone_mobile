@@ -1,7 +1,7 @@
-import 'package:capstone/Login/login.dart';
+import 'package:capstone/pages/login.dart';
 
-import 'package:capstone/Login/student_Login.dart';
-import 'package:capstone/Login/student_teacher.dart';
+import 'package:capstoxne/pages/student_Login.dart';
+import 'package:capstone/pages/student_teacher.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
