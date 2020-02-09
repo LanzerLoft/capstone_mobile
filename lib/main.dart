@@ -1,6 +1,6 @@
 import 'package:capstone/pages/login.dart';
 
-import 'package:capstoxne/pages/student_Login.dart';
+import 'package:capstone/pages/student_Login.dart';
 import 'package:capstone/pages/student_teacher.dart';
 import 'package:flutter/material.dart';
 
