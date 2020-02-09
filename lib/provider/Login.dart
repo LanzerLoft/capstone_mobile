@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:capstone/models/StudentLogin.dart';
 import 'package:capstone/url.dart';
 import 'package:http/http.dart' as http;
+import 'package:capstone/models/ErrorStatus.dart';
 
 class Login { 
   final Url url = Url();
@@ -18,12 +19,7 @@ class Login {
 
     print(res.body.toString());
 
-    if(res.statusCode == 200){
-      return StudentLogin.fromJson(json.decode(res.body));
-    }
+    return StudentLogin.fromJson(json.decode(res.body));
 
-    if(res.statusCode == 401){
-      return ErrorStatus.fromJson(json.decode(res.body));
-    }
   }
 }
