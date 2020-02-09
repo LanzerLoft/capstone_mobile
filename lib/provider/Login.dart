@@ -8,7 +8,7 @@ class Login {
   final Url url = Url();
 
   Future<StudentLogin> getStudent(String user, String pwd) async {
-    final res = await http.put(
+    final res = await http.post(
       url.student_login,
       body: {
         'user': user, 
@@ -20,8 +20,10 @@ class Login {
 
     if(res.statusCode == 200){
       return StudentLogin.fromJson(json.decode(res.body));
-    }else{
-      return null;
+    }
+
+    if(res.statusCode == 401){
+      return ErrorStatus.fromJson(json.decode(res.body));
     }
   }
 }
