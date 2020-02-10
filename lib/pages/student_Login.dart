@@ -99,25 +99,28 @@ class StudentLogin extends StatelessWidget {
                   ),
                   Container(
                     height: 43,
-                    child: FlatButton(
-                      onPressed: () {
-                        sl.submit(context);
-                      },
-                      color: Colors.blueGrey,
-                      splashColor: Colors.white38,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)),
-                      child: Center(
-                        child: Text(
-                          'Login',
-                          style: TextStyle(
-                            color: Color(0xffffffff),
-                            fontWeight: FontWeight.normal,
-                            fontFamily: 'OpenSans',
-                            fontSize: 22,
+                    child: StreamBuilder(
+                      stream: sl.epnStream,
+                      builder: (context, snapshot) {
+                        return FlatButton(
+                          onPressed: snapshot.hasData ? () => sl.submit(context) : null ,
+                          color: Colors.blueGrey,
+                          splashColor: Colors.white38,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50)),
+                          child: Center(
+                            child: Text(
+                              'Login',
+                              style: TextStyle(
+                                color: Color(0xffffffff),
+                                fontWeight: FontWeight.normal,
+                                fontFamily: 'OpenSans',
+                                fontSize: 22,
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
+                        );
+                      }
                     ),
                   ),
                 ],
