@@ -10,12 +10,12 @@ class LoginValidate {
       if(user.length == 0){
         sink.addError('Please Enter your ID Number');
 
-      }else if(!_regExp.hasMatch(user)){
-        sink.addError('Enter Valid Number');
+      // }else if(!_regExp.hasMatch(user)){
+      //   sink.addError('Enter Valid Number');
 
+      // 
       }else{
-        sink.add(user);
-        
+        sink.add(user);    
       }
     }
   );
