@@ -28,6 +28,7 @@ class LoginBloc  extends Object with LoginValidate implements Bloc{
 
       if(data.status == true){
         SpLogin.setToken(data.token);
+        Navigator.of(context).pushNamed('/dashboard');
       }else{ 
         print(data.message);
         Navigator.pop(context, false);
