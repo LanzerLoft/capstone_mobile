@@ -1,6 +1,7 @@
-import 'package:capstone/pages/login.dart';
-
-import 'package:capstone/pages/student_Login.dart';
+import 'package:capstone/pages/dashboard.dart';
+import 'package:capstone/pages/faculty_login.dart';
+import 'package:capstone/pages/loading.dart';
+import 'package:capstone/pages/student_login.dart';
 import 'package:capstone/pages/student_teacher.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Frontlogin(),
+      routes: {
+        '/student_login': (c) => StudentLogin(),
+        '/dashboard': (c) => Dashboard(),
+        '/faculty_login': (c) => Facultylogin(),
+        '/front_login': (c) => Frontlogin(),
+        '/loading': (c) => Loading()  
+      }
     );
   }
 }
