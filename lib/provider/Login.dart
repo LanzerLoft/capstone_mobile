@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:capstone/models/StudentLogin.dart';
 import 'package:capstone/url.dart';
 import 'package:http/http.dart' as http;
-import 'package:capstone/models/ErrorStatus.dart';
 
 class Login { 
   final Url url = Url();
@@ -16,10 +15,8 @@ class Login {
         'pwd': pwd
       }
     );
-
-    print(res.body.toString());
-
-    return StudentLogin.fromJson(json.decode(res.body));
-
+  
+    return new Future.delayed(const Duration(seconds: 1), () => StudentLogin.fromJson(json.decode(res.body)));
+ 
   }
 }
