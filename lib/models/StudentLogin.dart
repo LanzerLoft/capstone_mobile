@@ -1,29 +1,29 @@
-class StudentLogin { 
-  String _status;
-  String _token; 
-  Data _data; 
+import 'package:capstone/models/Data.dart';
 
-  StudentLogin.fromJson(Map<String, dynamic> parsedJson){
-    _status = parsedJson['status'];
-    _token = parsedJson['status'];
-    _data = Data.fromJson(parsedJson['status']);
+class StudentLogin {
+  bool status;
+  String token;
+  Data data;
+  String message; 
+
+  StudentLogin({this.status, this.token, this.data, this.message});
+
+  StudentLogin.fromJson(Map<String, dynamic> json) {
+    status = json['status'];
+    token = json['token'];
+    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    message = json['message'];
+
   }
 
-  String get status => _status;
-  String get token => _token;
-  Data get data => _data;
-  
-}
-
-class Data {
-  String _id;
-  String _user;
-
-  Data.fromJson(Map<String, dynamic> json){
-    _id = json['id'];
-    _user = json['user'];
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['status'] = this.status;
+    data['token'] = this.token;
+    data['message'] = this.message;
+    if (this.data != null) {
+      data['data'] = this.data.toJson();
+    }
+    return data;
   }
-
-  String get id => _id;
-  String get user => _user;
 }
