@@ -1,4 +1,4 @@
-import 'package:capstone/pages/dashboard.dart';
+import 'package:capstone/pages/Main.dart';
 import 'package:flutter/material.dart';
 import 'package:passwordfield/passwordfield.dart';
 
@@ -70,7 +70,7 @@ class Facultylogin extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Dashboard()),
+                          MaterialPageRoute(builder: (context) => Main()),
                         );
                       },
                       child: Padding(
@@ -95,7 +95,7 @@ class Facultylogin extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Dashboard()),
+                                builder: (context) => Main()),
                           );
                         },
                         color: Colors.white,

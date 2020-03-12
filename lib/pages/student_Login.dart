@@ -1,4 +1,4 @@
-import 'package:capstone/pages/dashboard.dart';
+import 'package:capstone/pages/Main.dart';
 import 'package:flutter/material.dart';
 import 'package:passwordfield/passwordfield.dart';
 import 'package:capstone/bloc/LoginBloc.dart';
@@ -11,8 +11,7 @@ class StudentLogin extends StatelessWidget {
         child: Center(
           child: SingleChildScrollView(
             child: Padding(
-              padding:
-                  const EdgeInsets.only(top: 0, left: 40, right: 40, bottom: 0),
+              padding: const EdgeInsets.only(top: 0, left: 40, right: 40, bottom: 0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -20,7 +19,7 @@ class StudentLogin extends StatelessWidget {
                     height: 150,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: ExactAssetImage('assets/sbci.png', scale: 1.8),
+                        image: ExactAssetImage('assets/img/sbci.png', scale: 1.8),
                       ),
                     ),
                   ),
@@ -79,7 +78,7 @@ class StudentLogin extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Dashboard()),
+                        MaterialPageRoute(builder: (context) => Main()),
                       );
                     },
                     child: Padding(

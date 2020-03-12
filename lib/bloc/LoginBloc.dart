@@ -1,4 +1,7 @@
+import 'dart:convert';
 import 'package:capstone/bloc/bloc.dart';
+import 'package:capstone/pages/Main.dart';
+import 'package:capstone/pages/loading.dart';
 import 'package:capstone/repository/LoginRepo.dart';
 import 'package:capstone/shared_preferences/spLogin.dart';
 import 'package:capstone/validations/LoginValidate.dart';
@@ -22,13 +25,22 @@ class LoginBloc  extends Object with LoginValidate implements Bloc{
   Stream<bool> get validSubmit => Observable.combineLatest2(epnStream, pwdStream , (e, p) => true);
 
   submit(context) async { 
-    Navigator.of(context).pushNamed('/loading');
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => Loading()
+      )
+    );
 
     await _repo.getCurrent(_user.value, _pwd.value).then((data) async {
 
       if(data.status == true){
         SpLogin.setToken(data.token);
-        Navigator.of(context).pushNamed('/dashboard');
+        SpLogin.setDatas(json.encode(data.data));
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => Main()
+          )
+        );
       }else{ 
         print(data.message);
         Navigator.pop(context, false);

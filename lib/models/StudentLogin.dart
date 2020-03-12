@@ -1,5 +1,9 @@
 import 'package:capstone/models/Data.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'StudentLogin.g.dart';
+
+@JsonSerializable()
 class StudentLogin {
   bool status;
   String token;

@@ -1,4 +1,4 @@
-import 'package:capstone/pages/dashboard.dart';
+import 'package:capstone/pages/Main.dart';
 import 'package:capstone/pages/faculty_Login.dart';
 import 'package:capstone/pages/student_Login.dart';
 import 'package:flutter/material.dart';

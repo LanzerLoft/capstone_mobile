@@ -1,4 +1,3 @@
-
 class Data {
   String id;
   String user;

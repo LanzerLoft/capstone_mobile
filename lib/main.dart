@@ -1,4 +1,4 @@
-import 'package:capstone/pages/dashboard.dart';
+import 'package:capstone/pages/Main.dart';
 import 'package:capstone/pages/faculty_login.dart';
 import 'package:capstone/pages/loading.dart';
 import 'package:capstone/pages/student_login.dart';
@@ -12,11 +12,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Frontlogin(),
+      home: StudentLogin(),
       routes: {
         '/student_login': (c) => StudentLogin(),
-        '/dashboard': (c) => Dashboard(),
+        '/dashboard': (c) => Main(),
         '/faculty_login': (c) => Facultylogin(),
         '/front_login': (c) => Frontlogin(),
         '/loading': (c) => Loading()  

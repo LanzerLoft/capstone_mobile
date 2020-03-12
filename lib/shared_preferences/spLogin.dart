@@ -1,22 +1,33 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SpLogin{
-  static final String _token = '';
 
   static Future<bool> setToken(String token) async{
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.setString(_token, token) ?? false;
+    return prefs.setString('token', token) ?? false;
   }
 
   static Future<String> getToken() async{
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    return prefs.getString(_token) ?? '';
+    return prefs.getString('token') ?? '';
   }
 
-  static removeToken() async {
+  static Future<bool> setDatas(String datas) async{
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.setString('datas', datas) ?? false;
+  }
+
+  static Future<String> getDatas() async{
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    return prefs.clear();
+    return prefs.getString('datas') ?? '';
+  }
+  
+  static removePref() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    prefs.remove('token');
+    prefs.remove('datas');
   }
 }

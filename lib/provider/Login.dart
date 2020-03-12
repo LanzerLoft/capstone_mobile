@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:capstone/models/StudentLogin.dart';
-import 'package:capstone/url.dart';
+import 'package:capstone/utils/url.dart';
 import 'package:http/http.dart' as http;
 
 class Login { 
